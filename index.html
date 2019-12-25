@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>vue-demo</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="./packages/vue/dist/vue.global.js"></script>
+    <script type="module">
+        // import { useMousePosition } from './test.js'
+        const { createComponent, createApp, reactive, toRefs, ref } = Vue;
+        const component = createComponent({
+            template: `
+                <div>
+                    <div> 
+                        {{ count }}
+                        <button @click="addHandler">add</button>
+                    </div>
+                    <div> 
+                        name:{{ obj.name }},nickname:{{ obj.nickname }}
+                        <button @click="changeObj">changeObj</button>
+                    </div>
+                    <div> 
+                        arr:{{ arr }}
+                        <button @click="changeArr">changeArr</button>
+                    </div>
+                </div>
+            `,
+            setup(props, context) {
+                console.log(11111111111111);
+                console.log(props);
+                console.log(context);
+                const { x, y } = useMousePosition()
+                const data = reactive({
+                    count: 0,
+                });
+                const obj = reactive({
+                    name: 'zelinliu'
+                });
+                const arr = reactive([
+                    1,2,3
+                ]);
+                const addHandler = () => {
+                    data.count++;
+                    // alert(data.count)
+                };
+                const changeObj = () => {
+                    obj.nickname = '老实敦厚的泽哥';
+                };
+                const changeArr = () => {
+                    arr[2] = 5;
+                };
+
+                return {
+                    // 如果不用toRefs，解构之后就不是响应式的了
+                    // ...data,
+                    ...toRefs(data),
+                    // data,
+                    obj,
+                    arr,
+                    addHandler,
+                    changeObj,
+                    changeArr,
+                    x,
+                    y
+                };
+            },
+        });
+        createApp().mount(component, document.querySelector('#app'));
+    </script>
+</body>
+</html>

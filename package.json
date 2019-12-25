@@ -48,7 +48,7 @@
     "minimist": "^1.2.0",
     "prettier": "~1.14.0",
     "puppeteer": "^2.0.0",
-    "rollup": "^1.19.4",
+    "rollup": "^1.27.13",
     "rollup-plugin-terser": "^5.1.1",
     "rollup-plugin-typescript2": "^0.24.0",
     "ts-jest": "^24.0.2",
