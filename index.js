@@ -1,7 +1,7 @@
-// import { Vue } from "./packages/vue/dist/vue.global.js";
+const { ref, onMounted, onUnmounted } = Vue
 export function useMousePosition() {
-  const x = Vue.ref(0)
-  const y = Vue.ref(0)
+  const x = ref(0)
+  const y = ref(0)
 
   function update(e) {
     x.value = e.pageX
